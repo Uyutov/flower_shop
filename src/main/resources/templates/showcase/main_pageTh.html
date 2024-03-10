@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Корзина товаров</title>
+  <style>
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      list-style: none;
+    }
+
+    .item-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h3 {
+      margin: 0;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    .edit-btn, .remove-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .edit-btn {
+      background-color: #007bff;
+    }
+
+    .remove-btn {
+      background-color: #dc3545;
+    }
+    .cart-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+      z-index: 9999;
+    }
+
+    .container-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .col-12 {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+
+    .col-md-3 {
+      flex-basis: 25%;
+      max-width: 25%;
+    }
+
+    .col-md-6 {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+
+    .cart-logo {
+      display: inline-block;
+      width: 100px;
+      height: 60px;
+      background-image: url('path-to-logo.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .cart-search-form {
+      display: flex;
+      align-items: center;
+      height: 40px;
+    }
+
+    .cart-search-input {
+      flex-basis: 80%;
+      max-width: 80%;
+      height: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 3px 0 0 3px;
+      background-color: #f8f8f8;
+    }
+
+    .cart-search-button {
+      flex-basis: 20%;
+      max-width: 20%;
+      height: 100%;
+      padding: 0 15px;
+      border: none;
+      border-radius: 0 3px 3px 0;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .cart-search-button i {
+      display: inline-block;
+      margin-left: 5px;
+    }
+
+    .cart-summary {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 40px;
+    }
+
+    .cart-summary-total {
+      margin-right: 20px;
+      font-weight: bold;
+    }
+
+    .cart-summary-button {
+      display: inline-block;
+      height: 100%;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 18px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .cart-summary-button:hover {
+      background-color: #0069d9;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: normal;
+    }
+
+    nav {
+      background-color: #fff;
+      padding: 10px 0;
+      box-shadow: 0 2px 2px rgba(0,0,0,.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav li {
+      margin: 0 10px;
+    }
+
+    nav a {
+      color: #333;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #ff69b4;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: 64px;
+    }
+
+    .product {
+      margin-bottom: 30px;
+      background-color: #fff;
+      box-shadow: 0 2px 2px rgba(0,0,0,.1);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      transition: all .3s;
+    }
+
+    .product:hover {
+      box-shadow: 0 5px 5px rgba(0,0,0,.2);
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      height: 300px !important;
+      width: 300px !important;
+      object-fit: cover;
+    }
+
+    .product h2 {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .product p {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #666;
+    }
+
+    .product button {
+      background-color: #ff69b4;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .product button:hover {
+      background-color: #ff88c2;
+    }
+
+    .footer {
+      background-color: #ff69b4;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<header class="cart-header">
+  <div class="container-header">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <a href="#" class="cart-logo"></a>
+      </div>
+      <div class="col-12 col-md-6">
+        <form th:method="GET" th:action="@{/showcase}" class="cart-search-form">
+          <label for="search"></label>
+          <input type="text" name="keyword" class="cart-search-input" th:value="${keyword}" placeholder="Search..." id="search">
+          <button type="submit" class="cart-search-button">Search<i class="fas fa-search"></i></button>
+
+        </form>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="cart-summary">
+          <span class="cart-summary-total">Total: <span th:text="${order.getSumTotal_price()}"></span></span>
+          <a th:href="@{/showcase/cart}" class="cart-summary-button">View Cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#">Main</a></li>
+    <li><a href="#">About us</a></li>
+    <li><a href="#">Contacts</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div th:each="flower:${flowers}">
+    <div class="product">
+      <img th:src="${flower.getIconPath()}" >
+      <p th:text="${flower.getName()}"></p>
+      <p th:text="${flower.getPrice()}">Цена: 1000 руб.</p>
+      <button>
+        <a th:href="@{/showcase/flower/{flower_id}(flower_id = ${flower.getFlower_id()})}">See details</a>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2021 Flower shop</p>
+</div>
+
+</body>
+</html>

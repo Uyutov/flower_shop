@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="GET" th:action="@{/showcase}">
+    <input type="text" name="keyword" th:value="${keyword}" placeholder="Find by keywords">
+    <button type="submit">Search</button>
+    <div th:each="flower:${flowers}">
+        <img th:src="${flower.getIconPath()}" width="500px" height="500px">
+        <p th:text="${flower.getName()}"></p>
+    </div>
+</form>
+</body>
+</html>

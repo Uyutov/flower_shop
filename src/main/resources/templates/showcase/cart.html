@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/VFonts.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/VStyle.css">
+    <title>Корзина</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__title">
+            <h1>TeploTehInginiring.com</h1>
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase}">Catalog</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase/cart}">Cart</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/login}">Log in</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/registration}">Register</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="cart__list">
+                <button class="cart__yourorder" ><a th:href="@{/showcase/cart}">Your order</a></button>
+                <button class="cart__yourorder" ><a th:href="@{/customer/orders}">History of orders</a></button>
+                <table class="cart__list-table">
+                    <thead class="cart__thead">
+                        <tr class="cart__tr">
+                            <th class="cart__th">Name</th>
+                            <th class="cart__th">Number</th>
+                            <th class="cart__th">Price for one piece</th>
+                            <th class="cart__th">Total cost</th>
+                        </tr>
+                    </thead>
+                    <tbody class="cart__tbody">
+                        <div th:each="flower:${order.getFlowers()}">
+                            <tr class="cart__tr">
+                                <td class="cart__td" th:text="${flower.getName()}">ROSE</td>
+                                <td class="cart__td" th:text="${flower.getAmount()}">5</td>
+                                <td class="cart__td" th:text="${flower.getPrice()}">7.00 BR</td>
+                            </tr>
+                        </div>
+                    </tbody>
+                    <tfoot class="cart__tfoot">
+                        <tr class="cart__tr">
+                            <td class="cart__td" colspan="3">Order's cost</td>
+                            <td class="cart__td" th:text="${order.getSumTotal_price()}">115.00 BR</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <form th:action="@{/customer/create_order}" th:method="POST">
+                    <button class="cart__btn">Order</button>
+                </form>
+            </div>
+        </div>    
+    </main>
+
+<footer>
+    <div class="footer">
+        <p>@ TeploTehInginiring.com</p>
+    </div>
+</footer>
+</body>
+</html>

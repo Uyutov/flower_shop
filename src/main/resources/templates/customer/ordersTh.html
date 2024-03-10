@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/showcase/cart}">Go to cart</a>
+<div th:each="order:${order_state}">
+    <p>
+        <span th:text="${order.getFirst().getOrder_id()}"></span>
+        <span th:text="${order.getFirst().getTotal_price()}"></span>
+        <span th:text="${order.getSecond().getState()}"></span>
+    </p>
+</div>
+</body>
+</html>

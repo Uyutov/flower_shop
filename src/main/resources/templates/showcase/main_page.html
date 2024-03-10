@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/VFonts.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/VStyle.css">
+    <title>Цветочный магазин</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__title">
+            <h1>TeploTehInginiring.com</h1>
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase}">Catalog</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase/cart}">Cart</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/login}">Log in</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/registration}">Register</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="flower__search">
+                <form th:method="GET" th:action="@{/showcase}" class="flower__search-form">
+                    <input type="text" th:value="${keyword}" name="keyword" class="flower__search-input" placeholder="Search...">
+                    <button type="submit" class="flower__search-button">Press</button>
+                </form>
+            </div>
+            <div class="flower__list">
+                <div th:each="flower:${flowers}">
+                    <div class="flower__hp">
+                        <img th:src="${flower.getIconPath()}" >
+                        <h2 th:text="${flower.getName()}">ROSE</h2>
+                        <p th:text="${flower.getPrice()}">Цена: 1000 руб.</p>
+                        <button>
+                            <a th:href="@{/showcase/flower/{flower_id}(flower_id = ${flower.getFlower_id()})}">See details</a>
+                        </button>
+                    </div>
+                </div>
+            <!--<div class="flower__hp">
+                <img src="https://via.placeholder.com/500x500" alt="Букет 1">
+                <h2>SHRUBBY ROSE “PESTRO” #1</h2>
+                <p>7.00 BR</p>
+                <button>add to cart</button>
+            </div>
+
+            <div class="flower__hp">
+                <img src="https://via.placeholder.com/500x500" alt="Букет 2">
+                <h2>SHRUBBY ROSE “PESTRO” #1</h2>
+                <p>7.00 BR</p>
+                <button>add to cart</button>
+            </div>
+
+            <div class="flower__hp">
+                <img src="https://via.placeholder.com/500x500" alt="Букет 3">
+                <h2>SHRUBBY ROSE “PESTRO” #1</h2>
+                <p>7.00 BR</p>
+                <button>add to cart</button>
+            </div>
+
+            <div class="flower__hp">
+                <img src="https://via.placeholder.com/500x500" alt="Букет 4">
+                <h2>SHRUBBY ROSE “PESTRO” #1</h2>
+                <p>7.00 BR</p>
+                <button>add to cart</button>
+            </div>
+
+            <div class="flower__hp">
+                <img src="https://via.placeholder.com/500x500" alt="Букет 5">
+                <h2>SHRUBBY ROSE “PESTRO” #1</h2>
+                <p>7.00 BR</p>
+                <button>add to cart</button>
+            </div>
+
+            <div class="flower__hp">
+                <img src="https://via.placeholder.com/500x500" alt="Букет 6">
+                <h2>SHRUBBY ROSE “PESTRO” #1</h2>
+                <p>7.00 BR</p>
+                <button>add to cart</button>
+            </div>-->
+        </div>
+        </div>    
+    </main>
+
+<footer>
+    <div class="footer">
+        <p>@ TeploTehInginiring</p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/VFonts.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/VStyle.css">
+    <title>Логин</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__title">
+            <h1>TeploTehInginiring.com</h1>
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase}">Catalog</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase/cart}">Cart</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/login}">Log in</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/registration}">Register</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container log__cont">
+            <form class="log__form" name="f" method="post" action="/process_login">
+                <h2>LOGIN</h2>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <label class="log__label" for="phone">Phone number:</label>
+                <input class="log__input" type="text" id="phone" name="username" required><br>
+
+                <label class="log__label" for="password">Password:</label>
+                <input class="log__input" type="text" id="password" name="password" required><br>
+
+                <input class="log__btn" type="submit" value="LOG IN">
+                <div th:if="${param.error}" style="color: red"> Wrong name or password</div>
+            </form>
+        </div>  
+    </main> 
+
+<footer>
+    <div class="footer">
+        <p>@ TeploTehInginiring.com</p>
+    </div>
+</footer>
+</body>
+</html>

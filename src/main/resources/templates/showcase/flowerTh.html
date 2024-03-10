@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img th:src="'/'+${flower.getIconPath()}">
+<p>Name: <span th:text="${flower.getName()}"></span></p>
+<p>Price: <span th:text="${flower.getPrice()}"></span></p>
+<p>Length: <span th:text="${flower.getLength()}"></span></p>
+<p>Color: <span th:text="${flower.getColor()}"></span></p>
+ <form th:method="POST" th:action="@{/showcase/flower/{flower_id}(flower_id=${flower.getFlower_id()})}">
+    <input type="hidden" th:name="flower_id" th:value="${flower.getFlower_id()}"/>
+    <input type="number" th:name="amount">
+    <input type="submit" value="Add to cart">
+</form>
+</body>
+</html>

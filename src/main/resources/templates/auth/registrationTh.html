@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/auth/registration}" th:method="POST" th:object="${customer}">
+  <div>
+    <label for="phone_number">Phone number:</label>
+    <input type="text" th:field="*{phone_number}" id="phone_number"/>
+    <div style="color:red" th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}">Email error</div>
+    </br>
+    <label for="password">Password:</label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+    </br>
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+    </br>
+    <label for="surname">Surname</label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <div style="color:red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error</div>
+    </br>
+    <label for="address">Address</label>
+    <input type="text" th:field="*{address}" id="address"/>
+    <div style="color:red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Country error</div>
+    </br>
+    <input type="submit" value="Registrate">
+  </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Цветок</title>
+    <style>
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h3 {
+            margin: 0;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        .edit-btn, .remove-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #007bff;
+        }
+
+        .remove-btn {
+            background-color: #dc3545;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Роза</h1>
+HTML код для корзины с товарами в виде списка:
+
+```
+<div class="cart-items">
+    <ul>
+        <li>
+            <img src="product1.jpg" alt="Product">
+            <div class="item-details">
+                <h3>Product Name</h3>
+                <p>Price: $10.00</p>
+                <button class="edit-btn">Edit Item</button>
+                <button class="remove-btn">Remove Item</button>
+            </div>
+        </li>
+        <li>
+            <img src="product2.jpg" alt="Product">
+            <div class="item-details">
+                <h3>Product Name 2</h3>
+                <p>Price: $20.00</p>
+                <button class="edit-btn">Edit Item</button>
+                <button class="remove-btn">Remove Item</button>
+            </div>
+        </li>
+    </ul>
+</div>
+```
+
+CSS код для корзины с товарами:
+
+</body>
+</html>

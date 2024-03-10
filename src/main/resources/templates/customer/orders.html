@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/VFonts.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/VStyle.css">
+    <title>История заказов</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__title">
+            <h1>FLOWERSHOUSE.COM</h1>
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase}">Catalog</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase/cart}">Cart</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/login}">Log in</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/registration}">Register</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="hist__list">
+                <button class="hist__yourorder"><a th:href="@{/showcase/cart}">Your order</a></button>
+                <button class="hist__yourorder"><a th:href="@{/customer/orders}">History of orders</a></button>
+                <table class="hist__list-table">
+                    <thead class="hist__thead">
+                        <tr class="hist__tr">
+                            <th class="hist__th">Number</th>
+                            <th class="hist__th">State</th>
+                            <th class="hist__th">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody class="hist__tbody">
+                    <div th:each="order:${order_state}">
+                        <tr class="hist__tr">
+                            <td class="hist__td" th:text="${order.getFirst().getOrder_id()}">1</td>
+                            <td class="hist__td" th:text="${order.getSecond().getState()}">done</td>
+                            <td class="hist__td" th:text="${order.getFirst().getTotal_price()}">35.00 BR</td>
+                        </tr>
+                    </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>    
+    </main>
+
+<footer>
+    <div class="footer">
+        <p>@ Flowers</p>
+    </div>
+</footer>
+</body>
+</html>

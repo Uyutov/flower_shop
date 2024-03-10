@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin/create_provider}" th:object="${provider}">
+    <label for="provider_phone_number">Provider phone number:</label>
+    <input type="text" th:field="*{phone_number}" id="provider_phone_number">
+    </br>
+    <label for="provider_password">Provider password:</label>
+    <input type="text" th:field="*{password}" id="provider_password">
+    </br>
+    <input type="submit" value="Create provider">
+</form>
+<form th:method="POST" th:action="@{/admin/create_packer}" th:object="${packer}">
+    <label for="packer_phone_number">Packer phone number:</label>
+    <input type="text" th:field="*{phone_number}" id="packer_phone_number">
+    </br>
+    <label for="packer_password">Packer password:</label>
+    <input type="text" th:field="*{password}" id="packer_password">
+    </br>
+    <input type="submit" value="Create packer">
+</form>
+</br>
+
+<form th:action="@{/admin/create_json}" th:method="POST">
+    <input type="submit" value="Create json file of packers">
+</form>
+
+<form th:action="@{/admin/create_pdf}" th:method="POST">
+    <input type="submit" value="Create pdf with all admin info">
+</form>
+<p><span th:text="${flower.getName()}"></span>
+    <span th:text="${flower.getPrice()}"></span>
+    <span th:text="${flower.getColor()}"></span>
+    <span th:text="${flower.getLength()}"></span> </p>
+</body>
+</html>

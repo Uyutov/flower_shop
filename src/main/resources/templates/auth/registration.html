@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/VFonts.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/VStyle.css">
+    <title>Регистрация</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__title">
+            <h1>TeploTehInginiring.com</h1>
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase}">Catalog</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase/cart}">Cart</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/login}">Log in</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/registration}">Register</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <form class="reg__form"th:action="@{/auth/registration}" th:method="POST" th:object="${customer}">
+                <h2>REGISTRATION</h2>
+                <label class="reg__label" for="firstname">Name:</label>
+                <input class="reg__input" type="text" th:field="*{name}" id="firstname" name="firstname" required><br>
+
+                <label class="reg__label" for="lastname">Surname:</label>
+                <input class="reg__input" type="text" th:field="*{surname}" id="lastname" name="lastname" required><br>
+
+                <label class="reg__label" for="phone">Phone number:</label>
+                <input class="reg__input" type="tel" th:field="*{phone_number}" id="phone" name="phone" required><br>
+
+                <label class="reg__label" for="address">Address:</label>
+                <textarea class="reg__input" th:field="*{address}" name="address" id="address" required></textarea><br>
+
+                <label class="reg__label" for="password">Password:</label>
+                <input class="reg__input" type="password" th:field="*{password}" id="password" name="password" required><br>
+
+                <input class="reg__btn" type="submit" value="Register">
+            </form>
+        </div>  
+    </main> 
+
+<footer>
+    <div class="footer">
+        <p>@ TeploTehInginiring.com</p>
+    </div>
+</footer>
+</body>
+</html>

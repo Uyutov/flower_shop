@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/VFonts.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/VStyle.css">
+    <title>Цветок</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__title">
+            <h1>TeploTehInginiring.com</h1>
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase}">Catalog</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/showcase/cart}">Cart</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/login}">Log in</a>
+                </li>
+                <li class="header-nav-item">
+                    <a class="header__nav-link" th:href="@{/auth/registration}">Register</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="page__m">
+                <div class="page__content">
+                    <div class="page__img">
+                        <img class="page__img-flow" th:src="'/'+${flower.getIconPath()}" alt="Роза">
+                    </div>
+                    <div class="page__inf">
+                        <ul class="page__info">
+                            <li class="page__name" th:text="${flower.getName()}">SHRUBBY ROSE “PESTRO” #1</li>
+                            <li class="page__price" th:text="${flower.getPrice()}">7.00 BR</li>
+                            <li class="page__color" th:text="${flower.getColor()}">ORANGE</li>
+                        </ul>
+                        <form th:method="POST" th:action="@{/showcase/flower/{flower_id}(flower_id=${flower.getFlower_id()})}">
+                            <input class="page__kol" type="number" placeholder="Number of items" th:name="amount">
+                            <button type="submit" class="page__btn">Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </main> 
+<footer>
+    <div class="footer">
+        <p>@ TeploTehInginiring.com</p>
+    </div>
+</footer>
+</body>
+</html>

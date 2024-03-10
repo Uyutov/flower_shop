@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/provider/create_flower}" th:object="${flower}" enctype="multipart/form-data">
+  <label for="icon">Icon image:</label>
+  <input type="file" name="image" id="icon" accept="image/png, image/jpeg"/>
+  </br>
+  <label for="name">Flower name:</label>
+  <input type="text" th:field="*{name}" id="name">
+  </br>
+  <label for="amount">Flower amount:</label>
+  <input type="text" th:field="*{amount}" id="amount">
+  </br>
+  <label for="price">Flower price:</label>
+  <input type="text" th:field="*{price}" id="price">
+  </br>
+  <label for="length">Flower length:</label>
+  <input type="text" th:field="*{length}" id="length">
+  </br>
+  <label for="color">Flower color:</label>
+  <input type="text" th:field="*{color}" id="color">
+  </br>
+  <input type="submit" value="Create flower">
+</form>
+</body>
+</html>
